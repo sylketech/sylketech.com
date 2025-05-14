@@ -1,0 +1,7 @@
+.idea
+.vscode
+*.iml
+node_modules
+.next
+.env*
+!.env.example
