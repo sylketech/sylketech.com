@@ -17,6 +17,16 @@ export const metadata: Metadata = {
     template: "%s - Sylke Technologies",
   },
   description: "Free and open source building blocks for secure, privacy-first web applications.",
+  openGraph: {
+    type: "website",
+    url: "https://sylketech.com",
+    title: "Sylke Technologies",
+    description: "Free and open source building blocks for secure, privacy-first web applications.",
+    siteName: "Sylke Technologies",
+  },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
