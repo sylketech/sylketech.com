@@ -41,13 +41,19 @@ const config: NextConfig = {
   async headers() {
     return [
       {
-        source: "/:path*",
-        basePath: false,
+        // Fix cache control header for files in /public directory
+        source: "/:path*\\.(css|js|gif|svg|jpg|jpeg|png|woff|woff2|avif|webp)",
         headers: [
           {
             key: "cache-control",
-            value: "no-cache",
+            value: "public, max-age=31536000, immutable",
           },
+        ],
+      },
+      {
+        // Security headers
+        source: "/:path*",
+        headers: [
           {
             key: "content-security-policy",
             value: cspObjectToString,
