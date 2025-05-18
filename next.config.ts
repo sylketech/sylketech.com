@@ -13,12 +13,12 @@ const contentSecurityPolicy = {
   "worker-src": ["'self'", "blob:"],
   "connect-src": [
     "'self'",
-    !isProdEnv ? "ws://localhost:3000/" : "",
-    !isProdEnv ? "http://localhost:3000/" : "",
+    !isProdEnv ? "ws://localhost:3000" : "",
+    !isProdEnv ? "http://localhost:3000" : "",
   ],
   "frame-ancestors": ["'self'"],
   "form-action": ["'self'"],
-  "img-src": ["'self'", "blob:", "data:"],
+  "img-src": ["'self'", "blob:", "data:", "https://cdn.sylketech.com"],
 };
 
 const cspObjectToString = Object.entries(contentSecurityPolicy).reduce((acc, [key, value]) => {
@@ -33,6 +33,14 @@ const config: NextConfig = {
   compress: true,
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sylketech.com",
+      },
+    ],
   },
   output: "standalone",
   poweredByHeader: false,
