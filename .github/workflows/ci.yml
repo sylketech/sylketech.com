@@ -29,6 +29,8 @@ jobs:
 
       - name: Build project
         run: pnpm run build
+        env:
+          NEXT_PUBLIC_BASE_URL: http://localhost:3000
 
   code_quality:
     name: Code Quality
