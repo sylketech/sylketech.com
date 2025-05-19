@@ -14,7 +14,7 @@ try {
     console.log(`Testing: ${url}`);
 
     try {
-      execSync(`pnpx axe "${url}" --exit`, { stdio: "inherit" });
+      execSync(`pnpx @axe-core/cli "${url}" --exit`, { stdio: "inherit" });
     } catch (error) {
       console.log("Accessibility issues found on this page");
       hasFailures = true;
