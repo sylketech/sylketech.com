@@ -14,10 +14,7 @@ try {
     console.log(`Testing: ${url}`);
 
     try {
-      execSync(
-        `npx @axe-core/cli "${url}" --exit`,
-        { stdio: "inherit" }
-      );
+      execSync(`axe "${url}" --exit`, { stdio: "inherit" });
     } catch (error) {
       console.log("Accessibility issues found on this page");
       hasFailures = true;

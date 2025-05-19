@@ -36,8 +36,10 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_URL: http://localhost:3000
 
-      - name: Install chrome
-        run: npx browser-driver-manager install chrome
+      - name: Install axe and chrome
+        run: |
+          npm install -g @axe-core/cli
+          npx browser-driver-manager install chrome
 
       - name: Extract sitemap URLs
         run: node scripts/extract-sitemap-url.mjs
