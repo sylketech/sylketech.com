@@ -1,6 +1,6 @@
 import { execSync } from "node:child_process";
 import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
+// import { resolve } from "node:path";
 
 // Inspired by the following article, with modifications:
 // https://medium.com/@SkorekM/from-theory-to-automation-wcag-compliance-using-axe-core-next-js-and-github-actions-b9f63af8e155
@@ -9,8 +9,8 @@ try {
     .split("\n")
     .filter((path) => path.trim() !== "");
 
-  const binPath = execSync("pnpm bin").toString().trim();
-  const chromedriverPath = resolve(binPath, "chromedriver");
+  // const binPath = execSync("pnpm bin").toString().trim();
+  // const chromedriverPath = resolve(binPath, "chromedriver");
 
   let hasFailures = false;
 
@@ -18,7 +18,7 @@ try {
     console.log(`Testing: ${url}`);
 
     try {
-      execSync(`pnpm exec axe --chromedriver-path "${chromedriverPath}" "${url}" --exit`, {
+      execSync(`pnpm exec axe "${url}" --exit --verbose`, {
         stdio: "inherit",
       });
     } catch (error) {
