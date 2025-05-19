@@ -18,7 +18,7 @@ try {
     console.log(`Testing: ${url}`);
 
     try {
-      execSync(`pnpm exec --chromedriver-path "${chromedriverPath}" "${url}" --exit`, {
+      execSync(`pnpm exec axe --chromedriver-path "${chromedriverPath}" "${url}" --exit`, {
         stdio: "inherit",
       });
     } catch (error) {
