@@ -11,7 +11,7 @@ const instrumentSans = Instrument_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sylketech.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL),
   title: {
     default: "Sylke Technologies",
     template: "%s - Sylke Technologies",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description: "Free and open source building blocks for secure, privacy-first web applications.",
   openGraph: {
     type: "website",
-    url: "https://sylketech.com",
+    url: process.env.NEXT_PUBLIC_BASE_URL,
     title: "Sylke Technologies",
     description: "Free and open source building blocks for secure, privacy-first web applications.",
     siteName: "Sylke Technologies",

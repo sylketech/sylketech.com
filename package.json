@@ -6,7 +6,8 @@
     "build": "next build",
     "dev": "next --turbo",
     "format": "biome check --write .",
-    "prepare": "npx only-allow pnpm"
+    "prepare": "npx only-allow pnpm",
+    "start": "next start"
   },
   "dependencies": {
     "clsx": "^2.1.1",
