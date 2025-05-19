@@ -36,13 +36,23 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_URL: http://localhost:3000
 
-      - name: Install axe and chrome
-        run: |
-          npm install -g @axe-core/cli
-          npx browser-driver-manager install chrome
-
       - name: Extract sitemap URLs
         run: node scripts/extract-sitemap-url.mjs
+
+      - name: Get chromium version
+        run: |
+          CHROMIUM_VERSION=$(wget -qO- https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE | cut -d. -f1)
+          echo "Chromium version: $CHROMIUM_VERSION"
+          echo "CHROMIUM_VERSION=$CHROMIUM_VERSION" >> $GITHUB_ENV
+
+      - name: Setup chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: ${{ env.CHROMIUM_VERSION }}
+
+      - name: Install axe and chromedriver
+        run: |
+          pnpm add @axe-core/cli chromedriver@$CHROMIUM_VERSION
 
       - name: Start Next.js app
         run: |
@@ -51,7 +61,7 @@ jobs:
         timeout-minutes: 2
 
       - name: Wait for server to be ready
-        run: npx wait-on http://localhost:3000
+        run: pnpx wait-on http://localhost:3000
 
       - name: Run accessibility tests
         run: node scripts/run-a11y-tests.mjs
