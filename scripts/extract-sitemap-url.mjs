@@ -4,6 +4,8 @@ import { resolve } from "node:path";
 // Inspired by the following article, with modifications:
 // https://medium.com/@SkorekM/from-theory-to-automation-wcag-compliance-using-axe-core-next-js-and-github-actions-b9f63af8e155
 const sitemapPath = resolve(import.meta.dirname, "../.next/server/app/sitemap.xml.body");
+const outputPath = resolve(process.cwd(), "./scripts/sitemap-urls.txt");
+const basePath = 'http://localhost:3000'
 
 try {
   if (!existsSync(sitemapPath)) {
@@ -22,22 +24,20 @@ try {
     process.exit(1);
   }
 
-  const baseUrl = new URL(urls.find((u) => u.startsWith("http")));
-  const paths = urls.map((url) => {
+  const rewritten = urls.map((url) => {
     try {
-      const fullUrl = url.startsWith("http") ? url : new URL(url, baseUrl).toString();
-      return new URL(fullUrl).pathname;
+      const { pathname, search, hash } = new URL(url);
+      return `${basePath}${pathname}${search}${hash}`;
     } catch {
-      console.warn(`Fallback for invalid URL "${url}"`);
-      return url.startsWith("/") ? url : `/${url}`;
+      console.warn(`Invalid URL in sitemap: "${url}"`);
+      return null;
     }
-  });
+  }).filter(Boolean);
 
-  const outputPath = resolve(process.cwd(), "./scripts/sitemap-urls.txt");
-  writeFileSync(outputPath, paths.join("\n"));
+  writeFileSync(outputPath, rewritten.join("\n"));
 
-  console.log(`Found ${paths.length} URLs to test:`);
-  for (const path of paths) {
+  console.log(`Found ${rewritten.length} URLs to test:`);
+  for (const path of rewritten) {
     console.log(`  ${path}`);
   }
 } catch (err) {
