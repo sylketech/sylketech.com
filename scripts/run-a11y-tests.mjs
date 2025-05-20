@@ -18,7 +18,7 @@ try {
     console.log(`Testing: ${url}`);
 
     try {
-      execSync(`pnpm exec axe "${url}" --exit --verbose`, {
+      execSync(`pnpm exec axe "${url}" --exit --tags wcag2a,wcag2aa,wcag2aaa --verbose`, {
         stdio: "inherit",
       });
     } catch (error) {
