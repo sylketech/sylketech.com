@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     description: "Free and open source building blocks for secure, privacy-first web applications.",
     siteName: "Sylke Technologies",
   },
+  appleWebApp: {
+    title: "Sylke Technologies",
+  },
   alternates: {
     canonical: "/",
   },
