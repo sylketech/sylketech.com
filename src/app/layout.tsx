@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className={cn(instrumentSans.variable, "antialiased")}>
+    <html lang="en" className={cn(instrumentSans.variable, "antialiased")} suppressHydrationWarning>
       <body>
         <div className="isolate">{children}</div>
       </body>
