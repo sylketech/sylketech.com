@@ -2,7 +2,6 @@
 .vscode
 *.iml
 node_modules
-.next
-.env*
-!.env.example
-scripts/*.txt
+dist
+target
+sitemap.xml

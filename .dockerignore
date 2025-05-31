@@ -1,7 +1,8 @@
 Dockerfile
 .dockerignore
-node_modules
+.idea
+**/dist
+**/node_modules
+**/target
 README.md
-.next
 .github
-scripts

@@ -1,0 +1,3 @@
+User-Agent: *
+
+Sitemap: https://sylketech.com/sitemap.xml
