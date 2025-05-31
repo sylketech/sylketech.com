@@ -1,3 +1,5 @@
+Dockerfile
+.dockerignore
 .idea
 dist
 node_modules
