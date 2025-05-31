@@ -1,4 +1,0 @@
-Contact: mailto:security@sylketech.com
-Expires: 2026-05-16T12:00:00Z
-Preferred-Languages: en
-Canonical: https://sylketech.com/.well-known/security.txt
