@@ -1,12 +1,13 @@
 FROM node:22-alpine AS frontend
 
 WORKDIR /app
-COPY client/package.json client/pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY client/package.json ./client
 RUN corepack enable pnpm
 RUN pnpm install --frozen-lockfile
-COPY client ./
-RUN pnpm run generate:sitemap
-RUN pnpm run build
+COPY client ./client
+RUN pnpm -F client run generate:sitemap
+RUN pnpm -F client run build
 
 FROM rust:1.87-alpine AS builder
 
@@ -49,6 +50,6 @@ COPY --from=files --chmod=444 /usr/share/zoneinfo /usr/share/zoneinfo
 COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/server /bin/sylketech-server
 USER sylketech:sylketech
 WORKDIR /app
-COPY --from=frontend /app/dist ./dist
+COPY --from=frontend /app/client/dist ./dist
 ENTRYPOINT ["/bin/sylketech-server"]
 EXPOSE 3000
