@@ -19,7 +19,7 @@ async fn main() {
         .init();
 
     let router = Router::new()
-        .nest_service("/", ServeDir::new("dist"))
+        .fallback_service(ServeDir::new("dist"))
         .layer(TraceLayer::new_for_http());
 
     let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
