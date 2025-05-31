@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  frontend-build:
     name: Frontend build
     runs-on: ubuntu-latest
 
@@ -33,10 +33,10 @@ jobs:
       - name: Generate sitemap
         run: pnpm -F client run generate:sitemap
 
-      - name: Build project
+      - name: Build client
         run: pnpm -F client run build
 
-  code_quality:
+  frontend-code-quality:
     name: Frontend code quality
     runs-on: ubuntu-latest
 
@@ -51,3 +51,20 @@ jobs:
 
       - name: Run biome
         run: biome ci
+
+  backend-build:
+    name: Backend build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Clippy server
+        run: cd server && cargo clippy --all-targets --all-features -- -D warnings
+
+      - name: Build server
+        run: cd server && cargo build --release
