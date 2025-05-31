@@ -1,32 +1,25 @@
-import { useState } from "react";
-import viteLogo from "/vite.svg";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
-
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button type="button" onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    <div className="isolate">
+      <main className="bg-brand-pale-white dark:bg-brand-graphite px-8 py-6 h-dvh flex items-center justify-center">
+        <div className="max-w-xl space-y-6">
+          <h1 className="flex flex-col md:flex-row text-3xl font-semibold leading-7 select-none text-brand-graphite dark:text-brand-pale-white">
+            SYLKE TECH
+          </h1>
+          <p className="text-gray-700 dark:text-gray-300">
+            Free and open source building blocks for secure, privacy-first web applications.
+          </p>
+          <a
+            href="https://github.com/sylketech"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:text-blue-600 transition-colors"
+          >
+            GitHub
+          </a>
+        </div>
+      </main>
+    </div>
   );
 }
 
