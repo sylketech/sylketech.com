@@ -1,7 +1,7 @@
 {
   "name": "client",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
     "build": "tsc -b && vite build",
@@ -23,6 +23,5 @@
     "tailwindcss": "^4.1.8",
     "typescript": "~5.8.3",
     "vite": "npm:rolldown-vite@^6.3.14"
-  },
-  "packageManager": "pnpm@10.11.0"
+  }
 }

@@ -1,3 +1,5 @@
+packages:
+  - 'client'
 onlyBuiltDependencies:
   - '@biomejs/biome'
   - '@tailwindcss/oxide'

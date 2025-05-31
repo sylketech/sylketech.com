@@ -11,10 +11,6 @@ jobs:
     name: Frontend build
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: ./client
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -35,18 +31,14 @@ jobs:
         run: pnpm install
 
       - name: Generate sitemap
-        run: pnpm run generate:sitemap
+        run: pnpm -F client run generate:sitemap
 
       - name: Build project
-        run: pnpm run build
+        run: pnpm -F client run build
 
   code_quality:
     name: Frontend code quality
     runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: ./client
 
     steps:
       - name: Checkout repository

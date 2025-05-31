@@ -1,8 +1,8 @@
 Dockerfile
 .dockerignore
 .idea
-client/dist
-client/node_modules
-server/target
+**/dist
+**/node_modules
+**/target
 README.md
 .github
