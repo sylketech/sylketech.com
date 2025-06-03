@@ -11,4 +11,4 @@ tracing = "0.1.41"
 tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
 
 [target.'cfg(not(target_env = "msvc"))'.dependencies]
-jemallocator = "0.5.4"
+tikv-jemallocator = "0.6.0"
