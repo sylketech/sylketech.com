@@ -9,7 +9,7 @@ COPY client ./client
 RUN pnpm -F client run generate:sitemap
 RUN pnpm -F client run build
 
-FROM rust:1.87-alpine AS builder
+FROM rust:1.89-alpine AS builder
 
 RUN apk update && \
     apk upgrade --no-cache && \
